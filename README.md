@@ -1,229 +1,184 @@
-🌾 AgriSmart – AI-Powered Crop & Plant Disease Identification
-Built by Krishna M (AgriSens)
+````markdown
+# 🌾 AgriSmart – AI-Powered Crop & Plant Disease Identification
 
-AgriSmart is an AI-driven agricultural support system designed to help farmers with:
+**Author:** Krishna M (AgriSens)  
 
-🍃 Plant Disease Detection using a deep learning EfficientNetB4 model
+AgriSmart is an AI-driven agricultural support system that helps farmers with:
 
-🌱 Crop Recommendation using a Random Forest classifier
+- 🍃 **Plant Disease Detection** using a deep learning EfficientNetB4 model  
+- 🌱 **Crop Recommendation** using a Random Forest classifier  
+- 📊 **High-accuracy, field-ready predictions**  
+- ⚙️ **Compatible with CPU, GPU, and WSL** environments  
 
-📊 High-accuracy, field-ready predictions
+Both ML & DL models are trained using high-quality Kaggle datasets and optimized for real-world usage.
 
-⚙️ Compatible with CPU, GPU, and WSL environments
+---
 
-Both ML & DL models in this project were trained using high-quality Kaggle datasets and optimized for real-world usage.
+## 🚀 Features
 
-📁 Project Structure
+- **Plant Disease Classification**
+  - EfficientNetB4 backbone with ImageNet weights  
+  - Strong data augmentation (flip, rotation, zoom, contrast)  
+  - Two-stage training (frozen backbone → fine-tuning)  
+  - Mixed precision & GPU-optimized input pipeline  
+
+- **Crop Recommendation**
+  - RandomForestClassifier wrapped in a scikit-learn Pipeline  
+  - Uses soil & weather features (N, P, K, temperature, humidity, pH, rainfall)  
+  - Achieves >99% accuracy on the Kaggle crop dataset  
+
+- **Analysis & Visualization**
+  - Per-class accuracy report for PlantVillage  
+  - Saved `y_true` and `y_pred` for metric analysis  
+  - Scripts to plot test metrics and final accuracy  
+
+---
+
+## 📊 Datasets
+
+- **Plant Disease Detection**
+
+  - **Dataset:** PlantVillage (Kaggle)  
+  - **Link:** <https://www.kaggle.com/datasets/emmarex/plantdisease>
+
+- **Crop Recommendation**
+
+  - **Dataset:** Crop Recommendation (Kaggle)  
+  - **Link:** <https://www.kaggle.com/datasets/atharvaingle/crop-recommendation-dataset>
+
+You should download these datasets manually and place them in the appropriate folders as described below.
+
+---
+
+## 📁 Project Structure
+
+```text
 AGRI/
 │
 ├── crop_recommadtion/
 │   ├── Crop_recommendation.csv
-│   ├── crop_recommender_rf.joblib
-│   ├── train_crop_model.py
-│   ├── use_model.py
+│   ├── crop_recommender_rf.joblib          # Saved RandomForest model
+│   ├── train_crop_model.py                 # Train crop recommendation model
+│   └── use_model.py                        # Example usage / inference script
 │
 ├── Plant_disease/
-│   ├── analyze_predictions.py
-│   ├── Make_Split.py
-│   ├── paper_figures.py
-│   ├── plot_final_accuracy.py
-│   ├── plot_test_metrics.py
-│   ├── predict_batch.py
-│   ├── predict_one.py
-│   ├── train.py
+│   ├── analyze_predictions.py              # Analyze y_true / y_pred
+│   ├── Make_Split.py                       # Create train/val splits
+│   ├── paper_figures.py                    # Helper for paper plots (optional)
+│   ├── plot_final_accuracy.py              # Plot final accuracy curves
+│   ├── plot_test_metrics.py                # Plot test metrics
+│   ├── predict_batch.py                    # Run batch predictions on a folder
+│   ├── predict_one.py                      # Run prediction on a single image
+│   └── train.py                            # EfficientNetB4 training script
 │
-├── PlantVillage/                  # Original Kaggle dataset
-├── PlantVillage_split/
+├── PlantVillage/                           # Original PlantVillage dataset
+│   ...                                     # (raw images from Kaggle)
+│
+├── PlantVillage_split/                     # Split dataset
 │   ├── train/
-│   ├── val/
+│   └── val/
 │
 ├── Results/
 │   ├── analysis/
-│   │   └── report.txt
-│   ├── tb_logs/
-│   ├── class_names.json
-│   ├── y_pred.npy
-│   ├── y_true.npy
+│   │   └── report.txt                      # Per-class accuracy report
+│   ├── tb_logs/                            # TensorBoard logs
+│   ├── class_names.json                    # Mapping of class indices to names
+│   ├── y_pred.npy                          # Predicted labels on val set
+│   └── y_true.npy                          # Ground truth labels on val set
 │
 ├── test_images/
-│   └── t1.JPG
+│   └── t1.JPG                              # Sample test image
 │
 └── README.md
+````
 
-🚨 Important Note — Model File Not Included
+---
 
-GitHub does NOT allow large files in the repository.
-Therefore, the trained plant disease model:
+## 📦 Model Files & Large File Note
 
-plantvillage_b4_best.keras
+The trained **Keras model** for plant disease classification is **not** stored in the GitHub repository because of its large size.
 
+* Expected file path:
 
-is not uploaded here.
+  ```text
+  Results/plantvillage_b4_best.keras
+  ```
 
-👉 A cloud storage link will be added to download the .keras model.
+* This file will be shared via **cloud storage (e.g., Google Drive)**:
 
-After downloading, place it here:
+  > 🔗 **Model Download Link:** *to be added*
 
+After downloading, place it at:
+
+```text
 AGRI/Results/plantvillage_b4_best.keras
+```
 
-🍃 1. Plant Disease Classification (EfficientNetB4)
-📌 Dataset
+The crop recommendation model **is small** and is stored as:
 
-Used: PlantVillage Dataset (Kaggle)
-https://www.kaggle.com/datasets/emmarex/plantdisease
+```text
+crop_recommadtion/crop_recommender_rf.joblib
+```
 
-📌 Features Of the Model
+---
 
-EfficientNetB4 backbone (ImageNet pretrained)
+## 🛠 Installation
 
-Optimized for GPU / WSL
+### 1️⃣ Clone the Repository
 
-RandomFlip, Rotation, Zoom, Contrast augmentations
-
-Two-stage training:
-
-Stage 1: Train classification head
-
-Stage 2: Fine-tune last 100 layers
-
-Mixed precision enabled
-
-Computes class weights
-
-Saves predictions + labels for metric analysis
-
-🚀 Training
-python Plant_disease/train.py
-
-📈 Plant Disease Model Performance
-🔥 Overall Accuracy: 99.66%
-
-(4127 validation images)
-
-📊 Per-Class Accuracy
-Class	Accuracy
-Pepper_bell___Bacterial_spot	99.50%
-Pepper_bell___healthy	99.66%
-Potato___Early_blight	100.00%
-Potato___Late_blight	100.00%
-Potato___healthy	100.00%
-Tomato___Bacterial_spot	99.76%
-Tomato___Early_blight	99.50%
-Tomato___Late_blight	99.48%
-Tomato___Leaf_Mold	99.47%
-Tomato___Septoria_leaf_spot	100.00%
-Tomato___Spider_mites___Two_spotted_spider_mite	98.81%
-Tomato___Target_Spot	99.29%
-Tomato___Tomato_YellowLeaf___Curl_Virus	99.84%
-Tomato___Tomato_mosaic_virus	100.00%
-Tomato___healthy	100.00%
-
-This performance is comparable to state-of-the-art research benchmarks.
-
-🌱 2. Crop Recommendation System (Random Forest)
-📌 Dataset
-
-Used: Crop Recommendation Dataset (Kaggle)
-https://www.kaggle.com/datasets/atharvaingle/crop-recommendation-dataset
-
-📌 Input Features
-
-Nitrogen (N)
-
-Phosphorus (P)
-
-Potassium (K)
-
-Temperature
-
-Humidity
-
-pH
-
-Rainfall
-
-📌 Model Workflow
-
-Train-test split
-
-Pipeline with StandardScaler
-
-RandomForestClassifier (300 trees)
-
-Exports final .joblib model
-
-🚀 Training
-python crop_recommadtion/train_crop_model.py
-
-📈 Crop Recommendation Model Performance
-🔥 Overall Accuracy: 99.55%
-📊 Classification Report (Summary)
-
-Almost all 22 crop classes achieved precision & recall of 1.00
-
-Few crops had slight variation:
-
-blackgram (F1 = 0.97)
-
-jute (F1 = 0.98)
-
-maize (F1 = 0.98)
-
-rice (F1 = 0.97)
-
-Weighted F1-Score = 1.00
-
-💾 Saved Model
-crop_recommender_rf.joblib
-
-🛠️ Installation
-1. Clone the repository
-git clone https://github.com/Krishna2004M/AgriSmart
+```bash
+git clone https://github.com/Krishna2004M/AgriSmart.git
 cd AgriSmart
+```
 
-2. Create a virtual environment
+### 2️⃣ Create & Activate a Virtual Environment
+
+```bash
+# Windows
 python -m venv venv
-source venv/bin/activate      # Linux/macOS
-venv\Scripts\activate         # Windows
+venv\Scripts\activate
 
-3. Install dependencies
+# Linux / macOS
+python -m venv venv
+source venv/bin/activate
+```
+
+### 3️⃣ Install Dependencies
+
+```bash
 pip install -r requirements.txt
+```
 
-📦 requirements.txt
-numpy
-pandas
-scikit-learn
-matplotlib
-tensorflow
-keras
-opencv-python
-Pillow
-joblib
-python-dotenv
-fastapi
-uvicorn[standard]
-streamlit
+---
 
-🧪 Prediction Examples
-1️⃣ Predict Plant Disease
-from tensorflow.keras.models import load_model
-import cv2, json, numpy as np
+## ▶️ Usage
 
-model = load_model("Results/plantvillage_b4_best.keras")
-labels = json.load(open("Results/class_names.json"))
+### 🌱 A. Crop Recommendation
 
-img = cv2.imread("test_images/t1.JPG")
-img = cv2.resize(img, (380, 380))
-img = np.expand_dims(img, axis=0)
+#### 1. Train the Model
 
-pred = model.predict(img)
-print(labels[np.argmax(pred)])
+Make sure `Crop_recommendation.csv` is inside `crop_recommadtion/`, then run:
 
-2️⃣ Predict Recommended Crop
+```bash
+cd crop_recommadtion
+python train_crop_model.py
+```
+
+This will:
+
+* Train a RandomForest model inside a scikit-learn Pipeline
+* Print the **accuracy** and **classification report**
+* Save the model as `crop_recommender_rf.joblib`
+
+#### 2. Use the Trained Model
+
+Example (inside `crop_recommadtion/use_model.py`):
+
+```python
 import joblib
 import pandas as pd
 
-model = joblib.load("crop_recommadtion/crop_recommender_rf.joblib")
+model = joblib.load("crop_recommender_rf.joblib")
 
 sample = pd.DataFrame([{
     "N": 90,
@@ -235,26 +190,112 @@ sample = pd.DataFrame([{
     "rainfall": 200
 }])
 
-print(model.predict(sample)[0])
+print("Recommended crop:", model.predict(sample)[0])
+```
 
-🚀 Future Scope
+Run:
 
-Add multilingual support (Hindi, Tamil, English)
+```bash
+python use_model.py
+```
 
-Deploy API (FastAPI / Flask)
+---
 
-Mobile app (React Native / Flutter)
+### 🍃 B. Plant Disease Classification
 
-Fertilizer recommendation module
+#### 1. Prepare the Dataset
 
-Weather-based insights
+* Download the **PlantVillage** dataset from Kaggle.
+* Keep raw images under `PlantVillage/`.
+* Use `Make_Split.py` (if needed) to create `PlantVillage_split/train` and `PlantVillage_split/val`.
 
-Region-specific crop recommendations
+#### 2. Train the EfficientNetB4 Model
 
-🤝 Contributing
+From the project root:
 
-Contributions, ideas, and enhancements are welcome!
+```bash
+cd Plant_disease
+python train.py
+```
 
-📄 License
+This script will:
 
-MIT License © 2025 Krishna M
+* Build the data pipeline with augmentation
+* Train in **two stages** (head → fine-tune)
+* Save:
+
+  * `Results/plantvillage_b4_best.keras`
+  * `Results/class_names.json`
+  * `Results/y_true.npy`
+  * `Results/y_pred.npy`
+  * TensorBoard logs under `Results/tb_logs/`
+
+#### 3. Run Inference on a Single Image
+
+```bash
+cd Plant_disease
+python predict_one.py --image_path ../test_images/t1.JPG
+```
+
+*(You can adapt this script to your own paths.)*
+
+---
+
+## 📈 Results
+
+### 🍃 Plant Disease Classification (EfficientNetB4)
+
+From `Results/analysis/report.txt`:
+
+* **Overall accuracy:** **99.66%** on **4127 validation images**
+
+#### Per-Class Accuracy
+
+| Class                                           | Accuracy |
+| ----------------------------------------------- | -------- |
+| Pepper_bell___Bacterial_spot                    | 99.50%   |
+| Pepper_bell___healthy                           | 99.66%   |
+| Potato___Early_blight                           | 100.00%  |
+| Potato___Late_blight                            | 100.00%  |
+| Potato___healthy                                | 100.00%  |
+| Tomato___Bacterial_spot                         | 99.76%   |
+| Tomato___Early_blight                           | 99.50%   |
+| Tomato___Late_blight                            | 99.48%   |
+| Tomato___Leaf_Mold                              | 99.47%   |
+| Tomato___Septoria_leaf_spot                     | 100.00%  |
+| Tomato___Spider_mites___Two_spotted_spider_mite | 98.81%   |
+| Tomato___Target_Spot                            | 99.29%   |
+| Tomato___Tomato_YellowLeaf___Curl_Virus         | 99.84%   |
+| Tomato___Tomato_mosaic_virus                    | 100.00%  |
+| Tomato___healthy                                | 100.00%  |
+
+---
+
+### 🌱 Crop Recommendation (Random Forest)
+
+From `crop_recommadtion/train_crop_model.py` output:
+
+* **Overall accuracy:** **99.55%**
+
+Most classes achieve precision & recall of **1.00**, with only minor drops (F1 ≈ 0.97–0.98) for a few crops such as **blackgram, jute, maize, rice**.
+Overall macro and weighted F1-scores are effectively **1.00**.
+
+---
+
+## 🔮 Future Work
+
+* FastAPI / Streamlit web interface for farmers
+* Mobile app integration (Flutter / React Native)
+* Multilingual support (e.g., Hindi, Tamil, English)
+* Fertilizer & pesticide recommendations
+* Weather-aware crop suggestions
+* Region-specific fine-tuning for Indian states
+
+---
+
+## 📄 License
+
+This project is released under the **MIT License**.
+© 2025 **Krishna M (AgriSens)**
+
+
