@@ -1,0 +1,15 @@
+file,true,pred,confidence
+/mnt/e/capston P/Agri/PlantVillage_split/val/Tomato__Target_Spot/755bfb4c-6d92-4a7f-814f-62615df4285e___Com.G_TgS_FL 9713.JPG,Tomato__Target_Spot,Tomato_Early_blight,0.975444
+/mnt/e/capston P/Agri/PlantVillage_split/val/Tomato_Late_blight/136d79a3-4eea-4415-9f3e-0ccb61d7aeef___RS_Late.B 5216.JPG,Tomato_Late_blight,Tomato_Early_blight,0.933558
+/mnt/e/capston P/Agri/PlantVillage_split/val/Tomato_Spider_mites_Two_spotted_spider_mite/ec674ddd-4f99-441f-a537-a78935cd454d___Com.G_SpM_FL 9575.JPG,Tomato_Spider_mites_Two_spotted_spider_mite,Tomato__Target_Spot,0.914196
+/mnt/e/capston P/Agri/PlantVillage_split/val/Tomato_Spider_mites_Two_spotted_spider_mite/77c058b8-2001-4416-8c49-0eb206ba4f57___Com.G_SpM_FL 1219.JPG,Tomato_Spider_mites_Two_spotted_spider_mite,Tomato__Target_Spot,0.847349
+/mnt/e/capston P/Agri/PlantVillage_split/val/Tomato_Spider_mites_Two_spotted_spider_mite/e346d87d-cd42-425f-a7a0-8fca01cb6f75___Com.G_SpM_FL 8550.JPG,Tomato_Spider_mites_Two_spotted_spider_mite,Tomato__Target_Spot,0.80093
+/mnt/e/capston P/Agri/PlantVillage_split/val/Tomato__Target_Spot/79016043-851a-459e-85ee-2c321a5217ce___Com.G_TgS_FL 0725.JPG,Tomato__Target_Spot,Pepper__bell___Bacterial_spot,0.763163
+/mnt/e/capston P/Agri/PlantVillage_split/val/Tomato__Tomato_YellowLeaf__Curl_Virus/8cf65a4a-7186-4d3b-ab25-b947ca20cb9b___YLCV_GCREC 5392.JPG,Tomato__Tomato_YellowLeaf__Curl_Virus,Tomato_Bacterial_spot,0.749048
+/mnt/e/capston P/Agri/PlantVillage_split/val/Tomato_Early_blight/a7a4d12c-61bf-401d-ab88-0572c4dec56d___RS_Erly.B 9464.JPG,Tomato_Early_blight,Tomato_Septoria_leaf_spot,0.744789
+/mnt/e/capston P/Agri/PlantVillage_split/val/Tomato_Bacterial_spot/2b011bd3-107c-4a83-b961-eb7131d2a76a___UF.GRC_BS_Lab Leaf 0281.JPG,Tomato_Bacterial_spot,Tomato_Late_blight,0.699845
+/mnt/e/capston P/Agri/PlantVillage_split/val/Tomato_Spider_mites_Two_spotted_spider_mite/4a3665bf-932d-4526-95a6-e491354df4ff___Com.G_SpM_FL 1541.JPG,Tomato_Spider_mites_Two_spotted_spider_mite,Tomato__Target_Spot,0.690069
+/mnt/e/capston P/Agri/PlantVillage_split/val/Pepper__bell___Bacterial_spot/cc9a53f1-2279-4427-88e5-559c3975a7c4___NREC_B.Spot 1833.JPG,Pepper__bell___Bacterial_spot,Tomato__Target_Spot,0.574718
+/mnt/e/capston P/Agri/PlantVillage_split/val/Pepper__bell___healthy/3306b49b-e3b3-4450-8609-ae44ab2b6593___bell-pepper-plant-61726.jpg,Pepper__bell___healthy,Tomato_Septoria_leaf_spot,0.463138
+/mnt/e/capston P/Agri/PlantVillage_split/val/Tomato_Leaf_Mold/fb0dbb23-b3fb-406f-bb7a-c5e0d45207d3___Crnl_L.Mold 8948.JPG,Tomato_Leaf_Mold,Pepper__bell___healthy,0.445785
+/mnt/e/capston P/Agri/PlantVillage_split/val/Tomato_Late_blight/1bfebfc9-3eda-4889-bdb1-75a8929a1b4f___GHLB_PS Leaf 48 Day 18.jpg,Tomato_Late_blight,Potato___healthy,0.437623

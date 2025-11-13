@@ -1,0 +1,18 @@
+Overall accuracy: 99.66% on 4127 images
+
+Per-class accuracy:
+Pepper__bell___Bacterial_spot             99.50%
+Pepper__bell___healthy                    99.66%
+Potato___Early_blight                    100.00%
+Potato___Late_blight                     100.00%
+Potato___healthy                         100.00%
+Tomato_Bacterial_spot                     99.76%
+Tomato_Early_blight                       99.50%
+Tomato_Late_blight                        99.48%
+Tomato_Leaf_Mold                          99.47%
+Tomato_Septoria_leaf_spot                100.00%
+Tomato_Spider_mites_Two_spotted_spider_mite  98.81%
+Tomato__Target_Spot                       99.29%
+Tomato__Tomato_YellowLeaf__Curl_Virus     99.84%
+Tomato__Tomato_mosaic_virus              100.00%
+Tomato_healthy                           100.00%
